@@ -45,11 +45,11 @@ func (s *BaseTurnkeyListener) EnterFunc_def(ctx *Func_defContext) {}
 // ExitFunc_def is called when production func_def is exited.
 func (s *BaseTurnkeyListener) ExitFunc_def(ctx *Func_defContext) {}
 
-// EnterFunc_call is called when production func_call is entered.
-func (s *BaseTurnkeyListener) EnterFunc_call(ctx *Func_callContext) {}
+// EnterParameters is called when production parameters is entered.
+func (s *BaseTurnkeyListener) EnterParameters(ctx *ParametersContext) {}
 
-// ExitFunc_call is called when production func_call is exited.
-func (s *BaseTurnkeyListener) ExitFunc_call(ctx *Func_callContext) {}
+// ExitParameters is called when production parameters is exited.
+func (s *BaseTurnkeyListener) ExitParameters(ctx *ParametersContext) {}
 
 // EnterExpression is called when production expression is entered.
 func (s *BaseTurnkeyListener) EnterExpression(ctx *ExpressionContext) {}
@@ -68,3 +68,21 @@ func (s *BaseTurnkeyListener) EnterFloat_expression(ctx *Float_expressionContext
 
 // ExitFloat_expression is called when production float_expression is exited.
 func (s *BaseTurnkeyListener) ExitFloat_expression(ctx *Float_expressionContext) {}
+
+// EnterBool_expression is called when production bool_expression is entered.
+func (s *BaseTurnkeyListener) EnterBool_expression(ctx *Bool_expressionContext) {}
+
+// ExitBool_expression is called when production bool_expression is exited.
+func (s *BaseTurnkeyListener) ExitBool_expression(ctx *Bool_expressionContext) {}
+
+// EnterIdent_expression is called when production ident_expression is entered.
+func (s *BaseTurnkeyListener) EnterIdent_expression(ctx *Ident_expressionContext) {}
+
+// ExitIdent_expression is called when production ident_expression is exited.
+func (s *BaseTurnkeyListener) ExitIdent_expression(ctx *Ident_expressionContext) {}
+
+// EnterCall_expression is called when production call_expression is entered.
+func (s *BaseTurnkeyListener) EnterCall_expression(ctx *Call_expressionContext) {}
+
+// ExitCall_expression is called when production call_expression is exited.
+func (s *BaseTurnkeyListener) ExitCall_expression(ctx *Call_expressionContext) {}

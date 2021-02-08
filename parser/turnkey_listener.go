@@ -20,8 +20,8 @@ type TurnkeyListener interface {
 	// EnterFunc_def is called when entering the func_def production.
 	EnterFunc_def(c *Func_defContext)
 
-	// EnterFunc_call is called when entering the func_call production.
-	EnterFunc_call(c *Func_callContext)
+	// EnterParameters is called when entering the parameters production.
+	EnterParameters(c *ParametersContext)
 
 	// EnterExpression is called when entering the expression production.
 	EnterExpression(c *ExpressionContext)
@@ -31,6 +31,15 @@ type TurnkeyListener interface {
 
 	// EnterFloat_expression is called when entering the float_expression production.
 	EnterFloat_expression(c *Float_expressionContext)
+
+	// EnterBool_expression is called when entering the bool_expression production.
+	EnterBool_expression(c *Bool_expressionContext)
+
+	// EnterIdent_expression is called when entering the ident_expression production.
+	EnterIdent_expression(c *Ident_expressionContext)
+
+	// EnterCall_expression is called when entering the call_expression production.
+	EnterCall_expression(c *Call_expressionContext)
 
 	// ExitStart is called when exiting the start production.
 	ExitStart(c *StartContext)
@@ -44,8 +53,8 @@ type TurnkeyListener interface {
 	// ExitFunc_def is called when exiting the func_def production.
 	ExitFunc_def(c *Func_defContext)
 
-	// ExitFunc_call is called when exiting the func_call production.
-	ExitFunc_call(c *Func_callContext)
+	// ExitParameters is called when exiting the parameters production.
+	ExitParameters(c *ParametersContext)
 
 	// ExitExpression is called when exiting the expression production.
 	ExitExpression(c *ExpressionContext)
@@ -55,4 +64,13 @@ type TurnkeyListener interface {
 
 	// ExitFloat_expression is called when exiting the float_expression production.
 	ExitFloat_expression(c *Float_expressionContext)
+
+	// ExitBool_expression is called when exiting the bool_expression production.
+	ExitBool_expression(c *Bool_expressionContext)
+
+	// ExitIdent_expression is called when exiting the ident_expression production.
+	ExitIdent_expression(c *Ident_expressionContext)
+
+	// ExitCall_expression is called when exiting the call_expression production.
+	ExitCall_expression(c *Call_expressionContext)
 }

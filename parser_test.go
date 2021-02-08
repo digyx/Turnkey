@@ -9,6 +9,10 @@ import (
 	"github.com/digyx/Turnkey/parser"
 )
 
+type turnkeyListener struct {
+	*parser.BaseTurnkeyListener
+}
+
 func TestLexer(t *testing.T) {
 	tests := []struct {
 		input    string
@@ -33,6 +37,28 @@ func TestLexer(t *testing.T) {
 		if result != test.expected {
 			t.Errorf("expected %s got %s", test.expected, result)
 		}
+	}
+}
+
+func TestParser(t *testing.T) {
+	tests := []string{
+		`5`,
+		`5.0`,
+		`true`,
+		`alex`,
+		`func this(){}`,
+		`func this(a, b){}`,
+		`this()`,
+		`this(a, b)`,
+	}
+
+	for _, test := range tests {
+		is := antlr.NewInputStream(test)
+		lexer := parser.NewTurnkeyLexer(is)
+		stream := antlr.NewCommonTokenStream(lexer, antlr.TokenDefaultChannel)
+
+		p := parser.NewTurnkeyParser(stream)
+		antlr.ParseTreeWalkerDefault.Walk(&turnkeyListener{}, p.Start())
 	}
 }
 
