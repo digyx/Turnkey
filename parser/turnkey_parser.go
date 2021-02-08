@@ -16,39 +16,58 @@ var _ = reflect.Copy
 var _ = strconv.Itoa
 
 var parserATN = []uint16{
-	3, 24715, 42794, 33075, 47597, 16764, 15335, 30598, 22884, 3, 17, 46, 4,
-	2, 9, 2, 4, 3, 9, 3, 4, 4, 9, 4, 4, 5, 9, 5, 3, 2, 3, 2, 3, 2, 3, 3, 3,
-	3, 5, 3, 16, 10, 3, 3, 4, 3, 4, 3, 4, 3, 4, 3, 4, 3, 4, 3, 4, 3, 4, 3,
-	4, 7, 4, 27, 10, 4, 12, 4, 14, 4, 30, 11, 4, 3, 5, 3, 5, 3, 5, 3, 5, 3,
-	5, 3, 5, 3, 5, 3, 5, 3, 5, 7, 5, 41, 10, 5, 12, 5, 14, 5, 44, 11, 5, 3,
-	5, 2, 4, 6, 8, 6, 2, 4, 6, 8, 2, 4, 3, 2, 6, 7, 3, 2, 8, 9, 2, 46, 2, 10,
-	3, 2, 2, 2, 4, 15, 3, 2, 2, 2, 6, 17, 3, 2, 2, 2, 8, 31, 3, 2, 2, 2, 10,
-	11, 5, 4, 3, 2, 11, 12, 7, 2, 2, 3, 12, 3, 3, 2, 2, 2, 13, 16, 5, 6, 4,
-	2, 14, 16, 5, 8, 5, 2, 15, 13, 3, 2, 2, 2, 15, 14, 3, 2, 2, 2, 16, 5, 3,
-	2, 2, 2, 17, 18, 8, 4, 1, 2, 18, 19, 7, 13, 2, 2, 19, 28, 3, 2, 2, 2, 20,
-	21, 12, 5, 2, 2, 21, 22, 9, 2, 2, 2, 22, 27, 5, 6, 4, 6, 23, 24, 12, 4,
-	2, 2, 24, 25, 9, 3, 2, 2, 25, 27, 5, 6, 4, 5, 26, 20, 3, 2, 2, 2, 26, 23,
-	3, 2, 2, 2, 27, 30, 3, 2, 2, 2, 28, 26, 3, 2, 2, 2, 28, 29, 3, 2, 2, 2,
-	29, 7, 3, 2, 2, 2, 30, 28, 3, 2, 2, 2, 31, 32, 8, 5, 1, 2, 32, 33, 7, 14,
-	2, 2, 33, 42, 3, 2, 2, 2, 34, 35, 12, 5, 2, 2, 35, 36, 9, 2, 2, 2, 36,
-	41, 5, 8, 5, 6, 37, 38, 12, 4, 2, 2, 38, 39, 9, 3, 2, 2, 39, 41, 5, 8,
-	5, 5, 40, 34, 3, 2, 2, 2, 40, 37, 3, 2, 2, 2, 41, 44, 3, 2, 2, 2, 42, 40,
-	3, 2, 2, 2, 42, 43, 3, 2, 2, 2, 43, 9, 3, 2, 2, 2, 44, 42, 3, 2, 2, 2,
-	7, 15, 26, 28, 40, 42,
+	3, 24715, 42794, 33075, 47597, 16764, 15335, 30598, 22884, 3, 19, 91, 4,
+	2, 9, 2, 4, 3, 9, 3, 4, 4, 9, 4, 4, 5, 9, 5, 4, 6, 9, 6, 4, 7, 9, 7, 4,
+	8, 9, 8, 4, 9, 9, 9, 3, 2, 3, 2, 3, 2, 3, 3, 3, 3, 5, 3, 24, 10, 3, 3,
+	4, 3, 4, 7, 4, 28, 10, 4, 12, 4, 14, 4, 31, 11, 4, 3, 4, 3, 4, 3, 5, 3,
+	5, 3, 5, 3, 5, 7, 5, 39, 10, 5, 12, 5, 14, 5, 42, 11, 5, 3, 5, 3, 5, 3,
+	5, 3, 6, 3, 6, 3, 6, 7, 6, 50, 10, 6, 12, 6, 14, 6, 53, 11, 6, 3, 6, 3,
+	6, 3, 6, 3, 6, 3, 7, 3, 7, 5, 7, 61, 10, 7, 3, 8, 3, 8, 3, 8, 3, 8, 3,
+	8, 3, 8, 3, 8, 3, 8, 3, 8, 7, 8, 72, 10, 8, 12, 8, 14, 8, 75, 11, 8, 3,
+	9, 3, 9, 3, 9, 3, 9, 3, 9, 3, 9, 3, 9, 3, 9, 3, 9, 7, 9, 86, 10, 9, 12,
+	9, 14, 9, 89, 11, 9, 3, 9, 2, 4, 14, 16, 10, 2, 4, 6, 8, 10, 12, 14, 16,
+	2, 4, 3, 2, 7, 8, 3, 2, 9, 10, 2, 91, 2, 18, 3, 2, 2, 2, 4, 23, 3, 2, 2,
+	2, 6, 25, 3, 2, 2, 2, 8, 34, 3, 2, 2, 2, 10, 46, 3, 2, 2, 2, 12, 60, 3,
+	2, 2, 2, 14, 62, 3, 2, 2, 2, 16, 76, 3, 2, 2, 2, 18, 19, 5, 4, 3, 2, 19,
+	20, 7, 2, 2, 3, 20, 3, 3, 2, 2, 2, 21, 24, 5, 12, 7, 2, 22, 24, 5, 8, 5,
+	2, 23, 21, 3, 2, 2, 2, 23, 22, 3, 2, 2, 2, 24, 5, 3, 2, 2, 2, 25, 29, 7,
+	14, 2, 2, 26, 28, 5, 12, 7, 2, 27, 26, 3, 2, 2, 2, 28, 31, 3, 2, 2, 2,
+	29, 27, 3, 2, 2, 2, 29, 30, 3, 2, 2, 2, 30, 32, 3, 2, 2, 2, 31, 29, 3,
+	2, 2, 2, 32, 33, 7, 15, 2, 2, 33, 7, 3, 2, 2, 2, 34, 35, 7, 5, 2, 2, 35,
+	40, 7, 12, 2, 2, 36, 37, 7, 19, 2, 2, 37, 39, 7, 4, 2, 2, 38, 36, 3, 2,
+	2, 2, 39, 42, 3, 2, 2, 2, 40, 38, 3, 2, 2, 2, 40, 41, 3, 2, 2, 2, 41, 43,
+	3, 2, 2, 2, 42, 40, 3, 2, 2, 2, 43, 44, 7, 13, 2, 2, 44, 45, 5, 6, 4, 2,
+	45, 9, 3, 2, 2, 2, 46, 47, 7, 19, 2, 2, 47, 51, 7, 12, 2, 2, 48, 50, 5,
+	12, 7, 2, 49, 48, 3, 2, 2, 2, 50, 53, 3, 2, 2, 2, 51, 49, 3, 2, 2, 2, 51,
+	52, 3, 2, 2, 2, 52, 54, 3, 2, 2, 2, 53, 51, 3, 2, 2, 2, 54, 55, 7, 4, 2,
+	2, 55, 56, 3, 2, 2, 2, 56, 57, 7, 13, 2, 2, 57, 11, 3, 2, 2, 2, 58, 61,
+	5, 14, 8, 2, 59, 61, 5, 16, 9, 2, 60, 58, 3, 2, 2, 2, 60, 59, 3, 2, 2,
+	2, 61, 13, 3, 2, 2, 2, 62, 63, 8, 8, 1, 2, 63, 64, 7, 16, 2, 2, 64, 73,
+	3, 2, 2, 2, 65, 66, 12, 5, 2, 2, 66, 67, 9, 2, 2, 2, 67, 72, 5, 14, 8,
+	6, 68, 69, 12, 4, 2, 2, 69, 70, 9, 3, 2, 2, 70, 72, 5, 14, 8, 5, 71, 65,
+	3, 2, 2, 2, 71, 68, 3, 2, 2, 2, 72, 75, 3, 2, 2, 2, 73, 71, 3, 2, 2, 2,
+	73, 74, 3, 2, 2, 2, 74, 15, 3, 2, 2, 2, 75, 73, 3, 2, 2, 2, 76, 77, 8,
+	9, 1, 2, 77, 78, 7, 17, 2, 2, 78, 87, 3, 2, 2, 2, 79, 80, 12, 5, 2, 2,
+	80, 81, 9, 2, 2, 2, 81, 86, 5, 16, 9, 6, 82, 83, 12, 4, 2, 2, 83, 84, 9,
+	3, 2, 2, 84, 86, 5, 16, 9, 5, 85, 79, 3, 2, 2, 2, 85, 82, 3, 2, 2, 2, 86,
+	89, 3, 2, 2, 2, 87, 85, 3, 2, 2, 2, 87, 88, 3, 2, 2, 2, 88, 17, 3, 2, 2,
+	2, 89, 87, 3, 2, 2, 2, 11, 23, 29, 40, 51, 60, 71, 73, 85, 87,
 }
 var deserializer = antlr.NewATNDeserializer(nil)
 var deserializedATN = deserializer.DeserializeFromUInt16(parserATN)
 
 var literalNames = []string{
-	"", "", "'func'", "'turn'", "'*'", "'/'", "'+'", "'-'", "'='", "'('", "')'",
+	"", "", "','", "'func'", "'turn'", "'*'", "'/'", "'+'", "'-'", "'='", "'('",
+	"')'", "'{'", "'}'",
 }
 var symbolicNames = []string{
-	"", "WS", "FUNC", "TURN", "MUL", "DIV", "ADD", "SUB", "ASSIGN", "LPAREN",
-	"RPAREN", "INT", "FLOAT", "BOOL", "STRING", "IDENT",
+	"", "WS", "COMMA", "FUNC", "TURN", "MUL", "DIV", "ADD", "SUB", "ASSIGN",
+	"LPAREN", "RPAREN", "LBRACE", "RBRACE", "INT", "FLOAT", "BOOL", "IDENT",
 }
 
 var ruleNames = []string{
-	"start", "expression", "int_expression", "float_expression",
+	"start", "statement", "block", "func_def", "func_call", "expression", "int_expression",
+	"float_expression",
 }
 var decisionToDFA = make([]*antlr.DFA, len(deserializedATN.DecisionToState))
 
@@ -80,28 +99,34 @@ func NewTurnkeyParser(input antlr.TokenStream) *TurnkeyParser {
 const (
 	TurnkeyParserEOF    = antlr.TokenEOF
 	TurnkeyParserWS     = 1
-	TurnkeyParserFUNC   = 2
-	TurnkeyParserTURN   = 3
-	TurnkeyParserMUL    = 4
-	TurnkeyParserDIV    = 5
-	TurnkeyParserADD    = 6
-	TurnkeyParserSUB    = 7
-	TurnkeyParserASSIGN = 8
-	TurnkeyParserLPAREN = 9
-	TurnkeyParserRPAREN = 10
-	TurnkeyParserINT    = 11
-	TurnkeyParserFLOAT  = 12
-	TurnkeyParserBOOL   = 13
-	TurnkeyParserSTRING = 14
-	TurnkeyParserIDENT  = 15
+	TurnkeyParserCOMMA  = 2
+	TurnkeyParserFUNC   = 3
+	TurnkeyParserTURN   = 4
+	TurnkeyParserMUL    = 5
+	TurnkeyParserDIV    = 6
+	TurnkeyParserADD    = 7
+	TurnkeyParserSUB    = 8
+	TurnkeyParserASSIGN = 9
+	TurnkeyParserLPAREN = 10
+	TurnkeyParserRPAREN = 11
+	TurnkeyParserLBRACE = 12
+	TurnkeyParserRBRACE = 13
+	TurnkeyParserINT    = 14
+	TurnkeyParserFLOAT  = 15
+	TurnkeyParserBOOL   = 16
+	TurnkeyParserIDENT  = 17
 )
 
 // TurnkeyParser rules.
 const (
 	TurnkeyParserRULE_start            = 0
-	TurnkeyParserRULE_expression       = 1
-	TurnkeyParserRULE_int_expression   = 2
-	TurnkeyParserRULE_float_expression = 3
+	TurnkeyParserRULE_statement        = 1
+	TurnkeyParserRULE_block            = 2
+	TurnkeyParserRULE_func_def         = 3
+	TurnkeyParserRULE_func_call        = 4
+	TurnkeyParserRULE_expression       = 5
+	TurnkeyParserRULE_int_expression   = 6
+	TurnkeyParserRULE_float_expression = 7
 )
 
 // IStartContext is an interface to support dynamic dispatch.
@@ -142,14 +167,14 @@ func NewStartContext(parser antlr.Parser, parent antlr.ParserRuleContext, invoki
 
 func (s *StartContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *StartContext) Expression() IExpressionContext {
-	var t = s.GetTypedRuleContext(reflect.TypeOf((*IExpressionContext)(nil)).Elem(), 0)
+func (s *StartContext) Statement() IStatementContext {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*IStatementContext)(nil)).Elem(), 0)
 
 	if t == nil {
 		return nil
 	}
 
-	return t.(IExpressionContext)
+	return t.(IStatementContext)
 }
 
 func (s *StartContext) EOF() antlr.TerminalNode {
@@ -198,12 +223,583 @@ func (p *TurnkeyParser) Start() (localctx IStartContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(8)
-		p.Expression()
+		p.SetState(16)
+		p.Statement()
 	}
 	{
-		p.SetState(9)
+		p.SetState(17)
 		p.Match(TurnkeyParserEOF)
+	}
+
+	return localctx
+}
+
+// IStatementContext is an interface to support dynamic dispatch.
+type IStatementContext interface {
+	antlr.ParserRuleContext
+
+	// GetParser returns the parser.
+	GetParser() antlr.Parser
+
+	// IsStatementContext differentiates from other interfaces.
+	IsStatementContext()
+}
+
+type StatementContext struct {
+	*antlr.BaseParserRuleContext
+	parser antlr.Parser
+}
+
+func NewEmptyStatementContext() *StatementContext {
+	var p = new(StatementContext)
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	p.RuleIndex = TurnkeyParserRULE_statement
+	return p
+}
+
+func (*StatementContext) IsStatementContext() {}
+
+func NewStatementContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *StatementContext {
+	var p = new(StatementContext)
+
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+
+	p.parser = parser
+	p.RuleIndex = TurnkeyParserRULE_statement
+
+	return p
+}
+
+func (s *StatementContext) GetParser() antlr.Parser { return s.parser }
+
+func (s *StatementContext) Expression() IExpressionContext {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*IExpressionContext)(nil)).Elem(), 0)
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IExpressionContext)
+}
+
+func (s *StatementContext) Func_def() IFunc_defContext {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*IFunc_defContext)(nil)).Elem(), 0)
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IFunc_defContext)
+}
+
+func (s *StatementContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *StatementContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *StatementContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(TurnkeyListener); ok {
+		listenerT.EnterStatement(s)
+	}
+}
+
+func (s *StatementContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(TurnkeyListener); ok {
+		listenerT.ExitStatement(s)
+	}
+}
+
+func (p *TurnkeyParser) Statement() (localctx IStatementContext) {
+	localctx = NewStatementContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 2, TurnkeyParserRULE_statement)
+
+	defer func() {
+		p.ExitRule()
+	}()
+
+	defer func() {
+		if err := recover(); err != nil {
+			if v, ok := err.(antlr.RecognitionException); ok {
+				localctx.SetException(v)
+				p.GetErrorHandler().ReportError(p, v)
+				p.GetErrorHandler().Recover(p, v)
+			} else {
+				panic(err)
+			}
+		}
+	}()
+
+	p.SetState(21)
+	p.GetErrorHandler().Sync(p)
+
+	switch p.GetTokenStream().LA(1) {
+	case TurnkeyParserINT, TurnkeyParserFLOAT:
+		p.EnterOuterAlt(localctx, 1)
+		{
+			p.SetState(19)
+			p.Expression()
+		}
+
+	case TurnkeyParserFUNC:
+		p.EnterOuterAlt(localctx, 2)
+		{
+			p.SetState(20)
+			p.Func_def()
+		}
+
+	default:
+		panic(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
+	}
+
+	return localctx
+}
+
+// IBlockContext is an interface to support dynamic dispatch.
+type IBlockContext interface {
+	antlr.ParserRuleContext
+
+	// GetParser returns the parser.
+	GetParser() antlr.Parser
+
+	// IsBlockContext differentiates from other interfaces.
+	IsBlockContext()
+}
+
+type BlockContext struct {
+	*antlr.BaseParserRuleContext
+	parser antlr.Parser
+}
+
+func NewEmptyBlockContext() *BlockContext {
+	var p = new(BlockContext)
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	p.RuleIndex = TurnkeyParserRULE_block
+	return p
+}
+
+func (*BlockContext) IsBlockContext() {}
+
+func NewBlockContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *BlockContext {
+	var p = new(BlockContext)
+
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+
+	p.parser = parser
+	p.RuleIndex = TurnkeyParserRULE_block
+
+	return p
+}
+
+func (s *BlockContext) GetParser() antlr.Parser { return s.parser }
+
+func (s *BlockContext) LBRACE() antlr.TerminalNode {
+	return s.GetToken(TurnkeyParserLBRACE, 0)
+}
+
+func (s *BlockContext) RBRACE() antlr.TerminalNode {
+	return s.GetToken(TurnkeyParserRBRACE, 0)
+}
+
+func (s *BlockContext) AllExpression() []IExpressionContext {
+	var ts = s.GetTypedRuleContexts(reflect.TypeOf((*IExpressionContext)(nil)).Elem())
+	var tst = make([]IExpressionContext, len(ts))
+
+	for i, t := range ts {
+		if t != nil {
+			tst[i] = t.(IExpressionContext)
+		}
+	}
+
+	return tst
+}
+
+func (s *BlockContext) Expression(i int) IExpressionContext {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*IExpressionContext)(nil)).Elem(), i)
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IExpressionContext)
+}
+
+func (s *BlockContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *BlockContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *BlockContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(TurnkeyListener); ok {
+		listenerT.EnterBlock(s)
+	}
+}
+
+func (s *BlockContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(TurnkeyListener); ok {
+		listenerT.ExitBlock(s)
+	}
+}
+
+func (p *TurnkeyParser) Block() (localctx IBlockContext) {
+	localctx = NewBlockContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 4, TurnkeyParserRULE_block)
+	var _la int
+
+	defer func() {
+		p.ExitRule()
+	}()
+
+	defer func() {
+		if err := recover(); err != nil {
+			if v, ok := err.(antlr.RecognitionException); ok {
+				localctx.SetException(v)
+				p.GetErrorHandler().ReportError(p, v)
+				p.GetErrorHandler().Recover(p, v)
+			} else {
+				panic(err)
+			}
+		}
+	}()
+
+	p.EnterOuterAlt(localctx, 1)
+	{
+		p.SetState(23)
+		p.Match(TurnkeyParserLBRACE)
+	}
+	p.SetState(27)
+	p.GetErrorHandler().Sync(p)
+	_la = p.GetTokenStream().LA(1)
+
+	for _la == TurnkeyParserINT || _la == TurnkeyParserFLOAT {
+		{
+			p.SetState(24)
+			p.Expression()
+		}
+
+		p.SetState(29)
+		p.GetErrorHandler().Sync(p)
+		_la = p.GetTokenStream().LA(1)
+	}
+	{
+		p.SetState(30)
+		p.Match(TurnkeyParserRBRACE)
+	}
+
+	return localctx
+}
+
+// IFunc_defContext is an interface to support dynamic dispatch.
+type IFunc_defContext interface {
+	antlr.ParserRuleContext
+
+	// GetParser returns the parser.
+	GetParser() antlr.Parser
+
+	// IsFunc_defContext differentiates from other interfaces.
+	IsFunc_defContext()
+}
+
+type Func_defContext struct {
+	*antlr.BaseParserRuleContext
+	parser antlr.Parser
+}
+
+func NewEmptyFunc_defContext() *Func_defContext {
+	var p = new(Func_defContext)
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	p.RuleIndex = TurnkeyParserRULE_func_def
+	return p
+}
+
+func (*Func_defContext) IsFunc_defContext() {}
+
+func NewFunc_defContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *Func_defContext {
+	var p = new(Func_defContext)
+
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+
+	p.parser = parser
+	p.RuleIndex = TurnkeyParserRULE_func_def
+
+	return p
+}
+
+func (s *Func_defContext) GetParser() antlr.Parser { return s.parser }
+
+func (s *Func_defContext) FUNC() antlr.TerminalNode {
+	return s.GetToken(TurnkeyParserFUNC, 0)
+}
+
+func (s *Func_defContext) LPAREN() antlr.TerminalNode {
+	return s.GetToken(TurnkeyParserLPAREN, 0)
+}
+
+func (s *Func_defContext) RPAREN() antlr.TerminalNode {
+	return s.GetToken(TurnkeyParserRPAREN, 0)
+}
+
+func (s *Func_defContext) Block() IBlockContext {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*IBlockContext)(nil)).Elem(), 0)
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IBlockContext)
+}
+
+func (s *Func_defContext) AllIDENT() []antlr.TerminalNode {
+	return s.GetTokens(TurnkeyParserIDENT)
+}
+
+func (s *Func_defContext) IDENT(i int) antlr.TerminalNode {
+	return s.GetToken(TurnkeyParserIDENT, i)
+}
+
+func (s *Func_defContext) AllCOMMA() []antlr.TerminalNode {
+	return s.GetTokens(TurnkeyParserCOMMA)
+}
+
+func (s *Func_defContext) COMMA(i int) antlr.TerminalNode {
+	return s.GetToken(TurnkeyParserCOMMA, i)
+}
+
+func (s *Func_defContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *Func_defContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *Func_defContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(TurnkeyListener); ok {
+		listenerT.EnterFunc_def(s)
+	}
+}
+
+func (s *Func_defContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(TurnkeyListener); ok {
+		listenerT.ExitFunc_def(s)
+	}
+}
+
+func (p *TurnkeyParser) Func_def() (localctx IFunc_defContext) {
+	localctx = NewFunc_defContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 6, TurnkeyParserRULE_func_def)
+	var _la int
+
+	defer func() {
+		p.ExitRule()
+	}()
+
+	defer func() {
+		if err := recover(); err != nil {
+			if v, ok := err.(antlr.RecognitionException); ok {
+				localctx.SetException(v)
+				p.GetErrorHandler().ReportError(p, v)
+				p.GetErrorHandler().Recover(p, v)
+			} else {
+				panic(err)
+			}
+		}
+	}()
+
+	p.EnterOuterAlt(localctx, 1)
+	{
+		p.SetState(32)
+		p.Match(TurnkeyParserFUNC)
+	}
+	{
+		p.SetState(33)
+		p.Match(TurnkeyParserLPAREN)
+	}
+	p.SetState(38)
+	p.GetErrorHandler().Sync(p)
+	_la = p.GetTokenStream().LA(1)
+
+	for _la == TurnkeyParserIDENT {
+		{
+			p.SetState(34)
+			p.Match(TurnkeyParserIDENT)
+		}
+		{
+			p.SetState(35)
+			p.Match(TurnkeyParserCOMMA)
+		}
+
+		p.SetState(40)
+		p.GetErrorHandler().Sync(p)
+		_la = p.GetTokenStream().LA(1)
+	}
+	{
+		p.SetState(41)
+		p.Match(TurnkeyParserRPAREN)
+	}
+	{
+		p.SetState(42)
+		p.Block()
+	}
+
+	return localctx
+}
+
+// IFunc_callContext is an interface to support dynamic dispatch.
+type IFunc_callContext interface {
+	antlr.ParserRuleContext
+
+	// GetParser returns the parser.
+	GetParser() antlr.Parser
+
+	// IsFunc_callContext differentiates from other interfaces.
+	IsFunc_callContext()
+}
+
+type Func_callContext struct {
+	*antlr.BaseParserRuleContext
+	parser antlr.Parser
+}
+
+func NewEmptyFunc_callContext() *Func_callContext {
+	var p = new(Func_callContext)
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	p.RuleIndex = TurnkeyParserRULE_func_call
+	return p
+}
+
+func (*Func_callContext) IsFunc_callContext() {}
+
+func NewFunc_callContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *Func_callContext {
+	var p = new(Func_callContext)
+
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+
+	p.parser = parser
+	p.RuleIndex = TurnkeyParserRULE_func_call
+
+	return p
+}
+
+func (s *Func_callContext) GetParser() antlr.Parser { return s.parser }
+
+func (s *Func_callContext) IDENT() antlr.TerminalNode {
+	return s.GetToken(TurnkeyParserIDENT, 0)
+}
+
+func (s *Func_callContext) LPAREN() antlr.TerminalNode {
+	return s.GetToken(TurnkeyParserLPAREN, 0)
+}
+
+func (s *Func_callContext) RPAREN() antlr.TerminalNode {
+	return s.GetToken(TurnkeyParserRPAREN, 0)
+}
+
+func (s *Func_callContext) COMMA() antlr.TerminalNode {
+	return s.GetToken(TurnkeyParserCOMMA, 0)
+}
+
+func (s *Func_callContext) AllExpression() []IExpressionContext {
+	var ts = s.GetTypedRuleContexts(reflect.TypeOf((*IExpressionContext)(nil)).Elem())
+	var tst = make([]IExpressionContext, len(ts))
+
+	for i, t := range ts {
+		if t != nil {
+			tst[i] = t.(IExpressionContext)
+		}
+	}
+
+	return tst
+}
+
+func (s *Func_callContext) Expression(i int) IExpressionContext {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*IExpressionContext)(nil)).Elem(), i)
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IExpressionContext)
+}
+
+func (s *Func_callContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *Func_callContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *Func_callContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(TurnkeyListener); ok {
+		listenerT.EnterFunc_call(s)
+	}
+}
+
+func (s *Func_callContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(TurnkeyListener); ok {
+		listenerT.ExitFunc_call(s)
+	}
+}
+
+func (p *TurnkeyParser) Func_call() (localctx IFunc_callContext) {
+	localctx = NewFunc_callContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 8, TurnkeyParserRULE_func_call)
+	var _la int
+
+	defer func() {
+		p.ExitRule()
+	}()
+
+	defer func() {
+		if err := recover(); err != nil {
+			if v, ok := err.(antlr.RecognitionException); ok {
+				localctx.SetException(v)
+				p.GetErrorHandler().ReportError(p, v)
+				p.GetErrorHandler().Recover(p, v)
+			} else {
+				panic(err)
+			}
+		}
+	}()
+
+	p.EnterOuterAlt(localctx, 1)
+	{
+		p.SetState(44)
+		p.Match(TurnkeyParserIDENT)
+	}
+	{
+		p.SetState(45)
+		p.Match(TurnkeyParserLPAREN)
+	}
+
+	p.SetState(49)
+	p.GetErrorHandler().Sync(p)
+	_la = p.GetTokenStream().LA(1)
+
+	for _la == TurnkeyParserINT || _la == TurnkeyParserFLOAT {
+		{
+			p.SetState(46)
+			p.Expression()
+		}
+
+		p.SetState(51)
+		p.GetErrorHandler().Sync(p)
+		_la = p.GetTokenStream().LA(1)
+	}
+	{
+		p.SetState(52)
+		p.Match(TurnkeyParserCOMMA)
+	}
+
+	{
+		p.SetState(54)
+		p.Match(TurnkeyParserRPAREN)
 	}
 
 	return localctx
@@ -289,7 +885,7 @@ func (s *ExpressionContext) ExitRule(listener antlr.ParseTreeListener) {
 
 func (p *TurnkeyParser) Expression() (localctx IExpressionContext) {
 	localctx = NewExpressionContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 2, TurnkeyParserRULE_expression)
+	p.EnterRule(localctx, 10, TurnkeyParserRULE_expression)
 
 	defer func() {
 		p.ExitRule()
@@ -307,21 +903,21 @@ func (p *TurnkeyParser) Expression() (localctx IExpressionContext) {
 		}
 	}()
 
-	p.SetState(13)
+	p.SetState(58)
 	p.GetErrorHandler().Sync(p)
 
 	switch p.GetTokenStream().LA(1) {
 	case TurnkeyParserINT:
 		p.EnterOuterAlt(localctx, 1)
 		{
-			p.SetState(11)
+			p.SetState(56)
 			p.int_expression(0)
 		}
 
 	case TurnkeyParserFLOAT:
 		p.EnterOuterAlt(localctx, 2)
 		{
-			p.SetState(12)
+			p.SetState(57)
 			p.float_expression(0)
 		}
 
@@ -454,8 +1050,8 @@ func (p *TurnkeyParser) int_expression(_p int) (localctx IInt_expressionContext)
 	localctx = NewInt_expressionContext(p, p.GetParserRuleContext(), _parentState)
 	var _prevctx IInt_expressionContext = localctx
 	var _ antlr.ParserRuleContext = _prevctx // TODO: To prevent unused variable warning.
-	_startState := 4
-	p.EnterRecursionRule(localctx, 4, TurnkeyParserRULE_int_expression, _p)
+	_startState := 12
+	p.EnterRecursionRule(localctx, 12, TurnkeyParserRULE_int_expression, _p)
 	var _la int
 
 	defer func() {
@@ -478,14 +1074,14 @@ func (p *TurnkeyParser) int_expression(_p int) (localctx IInt_expressionContext)
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(16)
+		p.SetState(61)
 		p.Match(TurnkeyParserINT)
 	}
 
 	p.GetParserRuleContext().SetStop(p.GetTokenStream().LT(-1))
-	p.SetState(26)
+	p.SetState(71)
 	p.GetErrorHandler().Sync(p)
-	_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 2, p.GetParserRuleContext())
+	_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 6, p.GetParserRuleContext())
 
 	for _alt != 2 && _alt != antlr.ATNInvalidAltNumber {
 		if _alt == 1 {
@@ -493,19 +1089,19 @@ func (p *TurnkeyParser) int_expression(_p int) (localctx IInt_expressionContext)
 				p.TriggerExitRuleEvent()
 			}
 			_prevctx = localctx
-			p.SetState(24)
+			p.SetState(69)
 			p.GetErrorHandler().Sync(p)
-			switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 1, p.GetParserRuleContext()) {
+			switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 5, p.GetParserRuleContext()) {
 			case 1:
 				localctx = NewInt_expressionContext(p, _parentctx, _parentState)
 				p.PushNewRecursionContext(localctx, _startState, TurnkeyParserRULE_int_expression)
-				p.SetState(18)
+				p.SetState(63)
 
 				if !(p.Precpred(p.GetParserRuleContext(), 3)) {
 					panic(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 3)", ""))
 				}
 				{
-					p.SetState(19)
+					p.SetState(64)
 
 					var _lt = p.GetTokenStream().LT(1)
 
@@ -523,20 +1119,20 @@ func (p *TurnkeyParser) int_expression(_p int) (localctx IInt_expressionContext)
 					}
 				}
 				{
-					p.SetState(20)
+					p.SetState(65)
 					p.int_expression(4)
 				}
 
 			case 2:
 				localctx = NewInt_expressionContext(p, _parentctx, _parentState)
 				p.PushNewRecursionContext(localctx, _startState, TurnkeyParserRULE_int_expression)
-				p.SetState(21)
+				p.SetState(66)
 
 				if !(p.Precpred(p.GetParserRuleContext(), 2)) {
 					panic(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 2)", ""))
 				}
 				{
-					p.SetState(22)
+					p.SetState(67)
 
 					var _lt = p.GetTokenStream().LT(1)
 
@@ -554,16 +1150,16 @@ func (p *TurnkeyParser) int_expression(_p int) (localctx IInt_expressionContext)
 					}
 				}
 				{
-					p.SetState(23)
+					p.SetState(68)
 					p.int_expression(3)
 				}
 
 			}
 
 		}
-		p.SetState(28)
+		p.SetState(73)
 		p.GetErrorHandler().Sync(p)
-		_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 2, p.GetParserRuleContext())
+		_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 6, p.GetParserRuleContext())
 	}
 
 	return localctx
@@ -691,8 +1287,8 @@ func (p *TurnkeyParser) float_expression(_p int) (localctx IFloat_expressionCont
 	localctx = NewFloat_expressionContext(p, p.GetParserRuleContext(), _parentState)
 	var _prevctx IFloat_expressionContext = localctx
 	var _ antlr.ParserRuleContext = _prevctx // TODO: To prevent unused variable warning.
-	_startState := 6
-	p.EnterRecursionRule(localctx, 6, TurnkeyParserRULE_float_expression, _p)
+	_startState := 14
+	p.EnterRecursionRule(localctx, 14, TurnkeyParserRULE_float_expression, _p)
 	var _la int
 
 	defer func() {
@@ -715,14 +1311,14 @@ func (p *TurnkeyParser) float_expression(_p int) (localctx IFloat_expressionCont
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(30)
+		p.SetState(75)
 		p.Match(TurnkeyParserFLOAT)
 	}
 
 	p.GetParserRuleContext().SetStop(p.GetTokenStream().LT(-1))
-	p.SetState(40)
+	p.SetState(85)
 	p.GetErrorHandler().Sync(p)
-	_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 4, p.GetParserRuleContext())
+	_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 8, p.GetParserRuleContext())
 
 	for _alt != 2 && _alt != antlr.ATNInvalidAltNumber {
 		if _alt == 1 {
@@ -730,19 +1326,19 @@ func (p *TurnkeyParser) float_expression(_p int) (localctx IFloat_expressionCont
 				p.TriggerExitRuleEvent()
 			}
 			_prevctx = localctx
-			p.SetState(38)
+			p.SetState(83)
 			p.GetErrorHandler().Sync(p)
-			switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 3, p.GetParserRuleContext()) {
+			switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 7, p.GetParserRuleContext()) {
 			case 1:
 				localctx = NewFloat_expressionContext(p, _parentctx, _parentState)
 				p.PushNewRecursionContext(localctx, _startState, TurnkeyParserRULE_float_expression)
-				p.SetState(32)
+				p.SetState(77)
 
 				if !(p.Precpred(p.GetParserRuleContext(), 3)) {
 					panic(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 3)", ""))
 				}
 				{
-					p.SetState(33)
+					p.SetState(78)
 
 					var _lt = p.GetTokenStream().LT(1)
 
@@ -760,20 +1356,20 @@ func (p *TurnkeyParser) float_expression(_p int) (localctx IFloat_expressionCont
 					}
 				}
 				{
-					p.SetState(34)
+					p.SetState(79)
 					p.float_expression(4)
 				}
 
 			case 2:
 				localctx = NewFloat_expressionContext(p, _parentctx, _parentState)
 				p.PushNewRecursionContext(localctx, _startState, TurnkeyParserRULE_float_expression)
-				p.SetState(35)
+				p.SetState(80)
 
 				if !(p.Precpred(p.GetParserRuleContext(), 2)) {
 					panic(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 2)", ""))
 				}
 				{
-					p.SetState(36)
+					p.SetState(81)
 
 					var _lt = p.GetTokenStream().LT(1)
 
@@ -791,16 +1387,16 @@ func (p *TurnkeyParser) float_expression(_p int) (localctx IFloat_expressionCont
 					}
 				}
 				{
-					p.SetState(37)
+					p.SetState(82)
 					p.float_expression(3)
 				}
 
 			}
 
 		}
-		p.SetState(42)
+		p.SetState(87)
 		p.GetErrorHandler().Sync(p)
-		_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 4, p.GetParserRuleContext())
+		_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 8, p.GetParserRuleContext())
 	}
 
 	return localctx
@@ -808,14 +1404,14 @@ func (p *TurnkeyParser) float_expression(_p int) (localctx IFloat_expressionCont
 
 func (p *TurnkeyParser) Sempred(localctx antlr.RuleContext, ruleIndex, predIndex int) bool {
 	switch ruleIndex {
-	case 2:
+	case 6:
 		var t *Int_expressionContext = nil
 		if localctx != nil {
 			t = localctx.(*Int_expressionContext)
 		}
 		return p.Int_expression_Sempred(t, predIndex)
 
-	case 3:
+	case 7:
 		var t *Float_expressionContext = nil
 		if localctx != nil {
 			t = localctx.(*Float_expressionContext)

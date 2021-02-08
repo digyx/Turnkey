@@ -11,6 +11,18 @@ type TurnkeyListener interface {
 	// EnterStart is called when entering the start production.
 	EnterStart(c *StartContext)
 
+	// EnterStatement is called when entering the statement production.
+	EnterStatement(c *StatementContext)
+
+	// EnterBlock is called when entering the block production.
+	EnterBlock(c *BlockContext)
+
+	// EnterFunc_def is called when entering the func_def production.
+	EnterFunc_def(c *Func_defContext)
+
+	// EnterFunc_call is called when entering the func_call production.
+	EnterFunc_call(c *Func_callContext)
+
 	// EnterExpression is called when entering the expression production.
 	EnterExpression(c *ExpressionContext)
 
@@ -22,6 +34,18 @@ type TurnkeyListener interface {
 
 	// ExitStart is called when exiting the start production.
 	ExitStart(c *StartContext)
+
+	// ExitStatement is called when exiting the statement production.
+	ExitStatement(c *StatementContext)
+
+	// ExitBlock is called when exiting the block production.
+	ExitBlock(c *BlockContext)
+
+	// ExitFunc_def is called when exiting the func_def production.
+	ExitFunc_def(c *Func_defContext)
+
+	// ExitFunc_call is called when exiting the func_call production.
+	ExitFunc_call(c *Func_callContext)
 
 	// ExitExpression is called when exiting the expression production.
 	ExitExpression(c *ExpressionContext)

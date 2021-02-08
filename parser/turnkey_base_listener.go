@@ -27,6 +27,30 @@ func (s *BaseTurnkeyListener) EnterStart(ctx *StartContext) {}
 // ExitStart is called when production start is exited.
 func (s *BaseTurnkeyListener) ExitStart(ctx *StartContext) {}
 
+// EnterStatement is called when production statement is entered.
+func (s *BaseTurnkeyListener) EnterStatement(ctx *StatementContext) {}
+
+// ExitStatement is called when production statement is exited.
+func (s *BaseTurnkeyListener) ExitStatement(ctx *StatementContext) {}
+
+// EnterBlock is called when production block is entered.
+func (s *BaseTurnkeyListener) EnterBlock(ctx *BlockContext) {}
+
+// ExitBlock is called when production block is exited.
+func (s *BaseTurnkeyListener) ExitBlock(ctx *BlockContext) {}
+
+// EnterFunc_def is called when production func_def is entered.
+func (s *BaseTurnkeyListener) EnterFunc_def(ctx *Func_defContext) {}
+
+// ExitFunc_def is called when production func_def is exited.
+func (s *BaseTurnkeyListener) ExitFunc_def(ctx *Func_defContext) {}
+
+// EnterFunc_call is called when production func_call is entered.
+func (s *BaseTurnkeyListener) EnterFunc_call(ctx *Func_callContext) {}
+
+// ExitFunc_call is called when production func_call is exited.
+func (s *BaseTurnkeyListener) ExitFunc_call(ctx *Func_callContext) {}
+
 // EnterExpression is called when production expression is entered.
 func (s *BaseTurnkeyListener) EnterExpression(ctx *ExpressionContext) {}
 

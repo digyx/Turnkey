@@ -1,8 +1,6 @@
 package main
 
 import (
-	"fmt"
-
 	"github.com/antlr/antlr4/runtime/Go/antlr"
 	"github.com/digyx/Turnkey/parser"
 )
@@ -12,7 +10,6 @@ type turnkeyListener struct {
 }
 
 func main() {
-	testLexer()
 	testParser()
 }
 
@@ -25,19 +22,4 @@ func testParser() {
 	p := parser.NewTurnkeyParser(stream)
 
 	antlr.ParseTreeWalkerDefault.Walk(&turnkeyListener{}, p.Start())
-}
-
-func testLexer() {
-	is := antlr.NewInputStream(`"HelloWorld"`)
-
-	lexer := parser.NewTurnkeyLexer(is)
-
-	for {
-		t := lexer.NextToken()
-		if t.GetTokenType() == antlr.TokenEOF {
-			break
-		}
-
-		fmt.Printf("%s (%q)\n", lexer.SymbolicNames[t.GetTokenType()], t.GetText())
-	}
 }

@@ -2,6 +2,7 @@ grammar Turnkey;
 
 // Whitespace
 WS: [ \r\n\t]+ -> skip;
+COMMA: ',';
 
 // Keywords
 FUNC: 'func';
@@ -16,22 +17,41 @@ SUB: '-';
 ASSIGN: '=';
 LPAREN: '(';
 RPAREN: ')';
+LBRACE: '{';
+RBRACE: '}';
 
 // Literals
 INT: [1-9][0-9]*;
 FLOAT: [1-9][0-9]* '.' [0-9]+;
 BOOL: 'true' | 'false';
-STRING: '"' [A-Za-z0-9]+ '"';
 
-IDENT: [_]*[a-z][A-Za-z0-9_]*;
+IDENT: [_]*[A-Za-z][A-Za-z0-9_]*;
 
 // Rules
-start : expression EOF;
+start : statement EOF;
 
+// Statements
+statement
+    : expression
+    | func_def
+    ;
+
+block
+    : LBRACE expression* RBRACE
+;
+
+func_def
+    : FUNC LPAREN (IDENT COMMA)* RPAREN block
+;
+
+func_call
+    : IDENT LPAREN (expression* COMMA) RPAREN
+;
+
+// Expressions
 expression
     : int_expression
     | float_expression
-    | string_expression
 ;
 
 int_expression
@@ -44,9 +64,4 @@ float_expression
     : float_expression op=('*'|'/') float_expression
     | float_expression op=('+'|'-') float_expression
     | FLOAT
-;
-
-string_expression
-    : string_expression op='+' string_expression
-    | STRING
 ;
