@@ -22,6 +22,7 @@ func TestLexer(t *testing.T) {
 		{`5.0`, "FLOAT 5.0"},
 		{`true`, "BOOL true"},
 		{`alex`, "IDENT alex"},
+		{`"Hello World!`, "STRING \"Hello World!\""},
 		{`func this()`, "FUNC:IDENT this:LPAREN:RPAREN"},
 		{`func this(a, b)`, "FUNC:IDENT this:LPAREN:IDENT a:IDENT b:RPAREN"},
 		{`this()`, "IDENT this:LPAREN:RPAREN"},
@@ -80,8 +81,11 @@ func repr(lexer *parser.TurnkeyLexer) string {
 			parser.TurnkeyLexerINT, parser.TurnkeyLexerBOOL:
 			tokType := lexer.SymbolicNames[tok.GetTokenType()]
 			repr = fmt.Sprintf("%s %s", tokType, tok.GetText())
-		case parser.TurnkeyLexerCOMMA:
+		case parser.TurnkeyLexerCOMMA, parser.TurnkeyLexerOPEN_STRING:
 			continue
+		case parser.TurnkeyLexerSTRING:
+			tokType := lexer.SymbolicNames[tok.GetTokenType()]
+			repr = fmt.Sprintf("%s %q", tokType, tok.GetText())
 		default:
 			repr = lexer.SymbolicNames[tok.GetTokenType()]
 		}

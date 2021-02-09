@@ -1,6 +1,6 @@
-// Code generated from Turnkey.g4 by ANTLR 4.8. DO NOT EDIT.
+// Code generated from TurnkeyParser.g4 by ANTLR 4.8. DO NOT EDIT.
 
-package parser // Turnkey
+package parser // TurnkeyParser
 
 import (
 	"fmt"
@@ -16,7 +16,7 @@ var _ = reflect.Copy
 var _ = strconv.Itoa
 
 var parserATN = []uint16{
-	3, 24715, 42794, 33075, 47597, 16764, 15335, 30598, 22884, 3, 19, 102,
+	3, 24715, 42794, 33075, 47597, 16764, 15335, 30598, 22884, 3, 22, 102,
 	4, 2, 9, 2, 4, 3, 9, 3, 4, 4, 9, 4, 4, 5, 9, 5, 4, 6, 9, 6, 4, 7, 9, 7,
 	4, 8, 9, 8, 4, 9, 9, 9, 4, 10, 9, 10, 4, 11, 9, 11, 4, 12, 9, 12, 3, 2,
 	3, 2, 3, 2, 3, 3, 3, 3, 5, 3, 30, 10, 3, 3, 4, 3, 4, 7, 4, 34, 10, 4, 12,
@@ -68,6 +68,7 @@ var literalNames = []string{
 var symbolicNames = []string{
 	"", "WS", "COMMA", "FUNC", "TURN", "MUL", "DIV", "ADD", "SUB", "ASSIGN",
 	"LPAREN", "RPAREN", "LBRACE", "RBRACE", "INT", "FLOAT", "BOOL", "IDENT",
+	"OPEN_STRING", "STRING", "CLOSE_STRING",
 }
 
 var ruleNames = []string{
@@ -96,31 +97,34 @@ func NewTurnkeyParser(input antlr.TokenStream) *TurnkeyParser {
 	this.RuleNames = ruleNames
 	this.LiteralNames = literalNames
 	this.SymbolicNames = symbolicNames
-	this.GrammarFileName = "Turnkey.g4"
+	this.GrammarFileName = "TurnkeyParser.g4"
 
 	return this
 }
 
 // TurnkeyParser tokens.
 const (
-	TurnkeyParserEOF    = antlr.TokenEOF
-	TurnkeyParserWS     = 1
-	TurnkeyParserCOMMA  = 2
-	TurnkeyParserFUNC   = 3
-	TurnkeyParserTURN   = 4
-	TurnkeyParserMUL    = 5
-	TurnkeyParserDIV    = 6
-	TurnkeyParserADD    = 7
-	TurnkeyParserSUB    = 8
-	TurnkeyParserASSIGN = 9
-	TurnkeyParserLPAREN = 10
-	TurnkeyParserRPAREN = 11
-	TurnkeyParserLBRACE = 12
-	TurnkeyParserRBRACE = 13
-	TurnkeyParserINT    = 14
-	TurnkeyParserFLOAT  = 15
-	TurnkeyParserBOOL   = 16
-	TurnkeyParserIDENT  = 17
+	TurnkeyParserEOF          = antlr.TokenEOF
+	TurnkeyParserWS           = 1
+	TurnkeyParserCOMMA        = 2
+	TurnkeyParserFUNC         = 3
+	TurnkeyParserTURN         = 4
+	TurnkeyParserMUL          = 5
+	TurnkeyParserDIV          = 6
+	TurnkeyParserADD          = 7
+	TurnkeyParserSUB          = 8
+	TurnkeyParserASSIGN       = 9
+	TurnkeyParserLPAREN       = 10
+	TurnkeyParserRPAREN       = 11
+	TurnkeyParserLBRACE       = 12
+	TurnkeyParserRBRACE       = 13
+	TurnkeyParserINT          = 14
+	TurnkeyParserFLOAT        = 15
+	TurnkeyParserBOOL         = 16
+	TurnkeyParserIDENT        = 17
+	TurnkeyParserOPEN_STRING  = 18
+	TurnkeyParserSTRING       = 19
+	TurnkeyParserCLOSE_STRING = 20
 )
 
 // TurnkeyParser rules.
@@ -199,13 +203,13 @@ func (s *StartContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) 
 }
 
 func (s *StartContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(TurnkeyListener); ok {
+	if listenerT, ok := listener.(TurnkeyParserListener); ok {
 		listenerT.EnterStart(s)
 	}
 }
 
 func (s *StartContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(TurnkeyListener); ok {
+	if listenerT, ok := listener.(TurnkeyParserListener); ok {
 		listenerT.ExitStart(s)
 	}
 }
@@ -310,13 +314,13 @@ func (s *StatementContext) ToStringTree(ruleNames []string, recog antlr.Recogniz
 }
 
 func (s *StatementContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(TurnkeyListener); ok {
+	if listenerT, ok := listener.(TurnkeyParserListener); ok {
 		listenerT.EnterStatement(s)
 	}
 }
 
 func (s *StatementContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(TurnkeyListener); ok {
+	if listenerT, ok := listener.(TurnkeyParserListener); ok {
 		listenerT.ExitStatement(s)
 	}
 }
@@ -444,13 +448,13 @@ func (s *BlockContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) 
 }
 
 func (s *BlockContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(TurnkeyListener); ok {
+	if listenerT, ok := listener.(TurnkeyParserListener); ok {
 		listenerT.EnterBlock(s)
 	}
 }
 
 func (s *BlockContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(TurnkeyListener); ok {
+	if listenerT, ok := listener.(TurnkeyParserListener); ok {
 		listenerT.ExitBlock(s)
 	}
 }
@@ -586,13 +590,13 @@ func (s *Func_defContext) ToStringTree(ruleNames []string, recog antlr.Recognize
 }
 
 func (s *Func_defContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(TurnkeyListener); ok {
+	if listenerT, ok := listener.(TurnkeyParserListener); ok {
 		listenerT.EnterFunc_def(s)
 	}
 }
 
 func (s *Func_defContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(TurnkeyListener); ok {
+	if listenerT, ok := listener.(TurnkeyParserListener); ok {
 		listenerT.ExitFunc_def(s)
 	}
 }
@@ -709,13 +713,13 @@ func (s *ParametersContext) ToStringTree(ruleNames []string, recog antlr.Recogni
 }
 
 func (s *ParametersContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(TurnkeyListener); ok {
+	if listenerT, ok := listener.(TurnkeyParserListener); ok {
 		listenerT.EnterParameters(s)
 	}
 }
 
 func (s *ParametersContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(TurnkeyListener); ok {
+	if listenerT, ok := listener.(TurnkeyParserListener); ok {
 		listenerT.ExitParameters(s)
 	}
 }
@@ -876,13 +880,13 @@ func (s *ExpressionContext) ToStringTree(ruleNames []string, recog antlr.Recogni
 }
 
 func (s *ExpressionContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(TurnkeyListener); ok {
+	if listenerT, ok := listener.(TurnkeyParserListener); ok {
 		listenerT.EnterExpression(s)
 	}
 }
 
 func (s *ExpressionContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(TurnkeyListener); ok {
+	if listenerT, ok := listener.(TurnkeyParserListener); ok {
 		listenerT.ExitExpression(s)
 	}
 }
@@ -1051,13 +1055,13 @@ func (s *Int_expressionContext) ToStringTree(ruleNames []string, recog antlr.Rec
 }
 
 func (s *Int_expressionContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(TurnkeyListener); ok {
+	if listenerT, ok := listener.(TurnkeyParserListener); ok {
 		listenerT.EnterInt_expression(s)
 	}
 }
 
 func (s *Int_expressionContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(TurnkeyListener); ok {
+	if listenerT, ok := listener.(TurnkeyParserListener); ok {
 		listenerT.ExitInt_expression(s)
 	}
 }
@@ -1288,13 +1292,13 @@ func (s *Float_expressionContext) ToStringTree(ruleNames []string, recog antlr.R
 }
 
 func (s *Float_expressionContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(TurnkeyListener); ok {
+	if listenerT, ok := listener.(TurnkeyParserListener); ok {
 		listenerT.EnterFloat_expression(s)
 	}
 }
 
 func (s *Float_expressionContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(TurnkeyListener); ok {
+	if listenerT, ok := listener.(TurnkeyParserListener); ok {
 		listenerT.ExitFloat_expression(s)
 	}
 }
@@ -1475,13 +1479,13 @@ func (s *Bool_expressionContext) ToStringTree(ruleNames []string, recog antlr.Re
 }
 
 func (s *Bool_expressionContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(TurnkeyListener); ok {
+	if listenerT, ok := listener.(TurnkeyParserListener); ok {
 		listenerT.EnterBool_expression(s)
 	}
 }
 
 func (s *Bool_expressionContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(TurnkeyListener); ok {
+	if listenerT, ok := listener.(TurnkeyParserListener); ok {
 		listenerT.ExitBool_expression(s)
 	}
 }
@@ -1566,13 +1570,13 @@ func (s *Ident_expressionContext) ToStringTree(ruleNames []string, recog antlr.R
 }
 
 func (s *Ident_expressionContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(TurnkeyListener); ok {
+	if listenerT, ok := listener.(TurnkeyParserListener); ok {
 		listenerT.EnterIdent_expression(s)
 	}
 }
 
 func (s *Ident_expressionContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(TurnkeyListener); ok {
+	if listenerT, ok := listener.(TurnkeyParserListener); ok {
 		listenerT.ExitIdent_expression(s)
 	}
 }
@@ -1675,13 +1679,13 @@ func (s *Call_expressionContext) ToStringTree(ruleNames []string, recog antlr.Re
 }
 
 func (s *Call_expressionContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(TurnkeyListener); ok {
+	if listenerT, ok := listener.(TurnkeyParserListener); ok {
 		listenerT.EnterCall_expression(s)
 	}
 }
 
 func (s *Call_expressionContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(TurnkeyListener); ok {
+	if listenerT, ok := listener.(TurnkeyParserListener); ok {
 		listenerT.ExitCall_expression(s)
 	}
 }
