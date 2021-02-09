@@ -14,6 +14,14 @@ DIV: '/';
 ADD: '+';
 SUB: '-';
 
+BANG: '!';
+EQ: '==';
+NOT_EQ: '!=';
+GT: '>';
+GT_EQ: '>=';
+LT: '<';
+LT_EQ: '<=';
+
 ASSIGN: '=';
 LPAREN: '(';
 RPAREN: ')';

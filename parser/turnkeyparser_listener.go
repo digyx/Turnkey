@@ -35,11 +35,17 @@ type TurnkeyParserListener interface {
 	// EnterBool_expression is called when entering the bool_expression production.
 	EnterBool_expression(c *Bool_expressionContext)
 
+	// EnterString_expression is called when entering the string_expression production.
+	EnterString_expression(c *String_expressionContext)
+
 	// EnterIdent_expression is called when entering the ident_expression production.
 	EnterIdent_expression(c *Ident_expressionContext)
 
 	// EnterCall_expression is called when entering the call_expression production.
 	EnterCall_expression(c *Call_expressionContext)
+
+	// EnterTurn_expression is called when entering the turn_expression production.
+	EnterTurn_expression(c *Turn_expressionContext)
 
 	// ExitStart is called when exiting the start production.
 	ExitStart(c *StartContext)
@@ -68,9 +74,15 @@ type TurnkeyParserListener interface {
 	// ExitBool_expression is called when exiting the bool_expression production.
 	ExitBool_expression(c *Bool_expressionContext)
 
+	// ExitString_expression is called when exiting the string_expression production.
+	ExitString_expression(c *String_expressionContext)
+
 	// ExitIdent_expression is called when exiting the ident_expression production.
 	ExitIdent_expression(c *Ident_expressionContext)
 
 	// ExitCall_expression is called when exiting the call_expression production.
 	ExitCall_expression(c *Call_expressionContext)
+
+	// ExitTurn_expression is called when exiting the turn_expression production.
+	ExitTurn_expression(c *Turn_expressionContext)
 }

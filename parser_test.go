@@ -10,7 +10,7 @@ import (
 )
 
 type turnkeyListener struct {
-	*parser.BaseTurnkeyListener
+	*parser.BaseTurnkeyParserListener
 }
 
 func TestLexer(t *testing.T) {
@@ -21,7 +21,7 @@ func TestLexer(t *testing.T) {
 		{`5`, "INT 5"},
 		{`5.0`, "FLOAT 5.0"},
 		{`true`, "BOOL true"},
-		{`alex`, "IDENT alex"},
+		{`foobar`, "IDENT foobar"},
 		{`"Hello World!`, "STRING \"Hello World!\""},
 		{`func this()`, "FUNC:IDENT this:LPAREN:RPAREN"},
 		{`func this(a, b)`, "FUNC:IDENT this:LPAREN:IDENT a:IDENT b:RPAREN"},
@@ -43,10 +43,11 @@ func TestLexer(t *testing.T) {
 
 func TestParser(t *testing.T) {
 	tests := []string{
-		`5`,
-		`5.0`,
-		`true`,
-		`alex`,
+		`5`, `5+7`, `5*7`, `5*7+3`, `5*(7+3)`,
+		`5.1`, `5.1+7.2`, `5.1*7.2`, `5.1*7.2+3.3`, `5.1*(7.2+3.3)`,
+		`true`, `!true`, `true == true`, `false != true`,
+		`foobar`,
+		`"Hello World!"`, `"Hello" + "World"`,
 		`func this(){}`,
 		`func this(a, b){}`,
 		`this()`,

@@ -75,6 +75,12 @@ func (s *BaseTurnkeyParserListener) EnterBool_expression(ctx *Bool_expressionCon
 // ExitBool_expression is called when production bool_expression is exited.
 func (s *BaseTurnkeyParserListener) ExitBool_expression(ctx *Bool_expressionContext) {}
 
+// EnterString_expression is called when production string_expression is entered.
+func (s *BaseTurnkeyParserListener) EnterString_expression(ctx *String_expressionContext) {}
+
+// ExitString_expression is called when production string_expression is exited.
+func (s *BaseTurnkeyParserListener) ExitString_expression(ctx *String_expressionContext) {}
+
 // EnterIdent_expression is called when production ident_expression is entered.
 func (s *BaseTurnkeyParserListener) EnterIdent_expression(ctx *Ident_expressionContext) {}
 
@@ -86,3 +92,9 @@ func (s *BaseTurnkeyParserListener) EnterCall_expression(ctx *Call_expressionCon
 
 // ExitCall_expression is called when production call_expression is exited.
 func (s *BaseTurnkeyParserListener) ExitCall_expression(ctx *Call_expressionContext) {}
+
+// EnterTurn_expression is called when production turn_expression is entered.
+func (s *BaseTurnkeyParserListener) EnterTurn_expression(ctx *Turn_expressionContext) {}
+
+// ExitTurn_expression is called when production turn_expression is exited.
+func (s *BaseTurnkeyParserListener) ExitTurn_expression(ctx *Turn_expressionContext) {}
